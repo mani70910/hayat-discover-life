@@ -1,24 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
+import { BedDouble, Utensils, Dumbbell, Volume2, VolumeX, ChevronDown, Clock3, Car, Wifi, Plane, Phone } from "lucide-react";
+import { ContactActions, SafeImage, SectionTitle, Stars } from "@/components/site";
+import { meta, photos } from "@/lib/hotel";
+export const Route = createFileRoute("/")({ head: () => ({ meta: meta("Al Hayat Hotel Sharjah | Discover Life...", "Stay at Al Hayat Hotel Sharjah, a four-star hotel with modern rooms, dining and recreation in central Sharjah.") }), component: Home });
+const slides=[photos.restaurant,photos.lobby,photos.room,photos.exterior,photos.suite];
+function Home(){const[slide,setSlide]=useState(0),[muted,setMuted]=useState(true),[videoReady,setVideoReady]=useState(false),[videoFailed,setVideoFailed]=useState(false);const video=useRef<HTMLVideoElement>(null);useEffect(()=>{const id=setInterval(()=>setSlide(v=>(v+1)%slides.length),5000);return()=>clearInterval(id)},[]);const toggle=()=>{if(!video.current)return;video.current.muted=!muted;setMuted(!muted);video.current.play().catch(()=>setMuted(true))};return <main>
+<section className="home-hero"><div className="hero-media">{slides.map((s,i)=><SafeImage key={s} src={s} alt="Al Hayat Hotel Sharjah" className={`hero-slide ${i===slide?"active":""}`} eager={i===0}/>)}{!videoFailed&&<video ref={video} className="hero-video" src="/videos/hero.mp4" autoPlay muted={muted} loop playsInline onCanPlay={()=>setVideoReady(true)} onError={()=>setVideoFailed(true)} style={{opacity:videoReady?1:0}}/>}</div><div className="hero-overlay"/><div className="hero-content"><span>Welcome to</span><h1>Al Hayat Hotel Sharjah</h1><Stars/><p>Discover Life...</p><Link className="button button-gold" to="/book">Book Al Hayat</Link></div>{videoReady&&<button className="sound-button" onClick={toggle} aria-label={muted?"Turn sound on":"Turn sound off"}>{muted?<VolumeX/>:<Volume2/>}</button>}<ChevronDown className="scroll-indicator"/><div className="hero-options"><Link className="hero-option" to="/rooms"><BedDouble/><div><strong>Rooms</strong><span>Modern comfort in Sharjah</span></div></Link><Link className="hero-option" to="/dining"><Utensils/><div><strong>Dine In / Conference Room</strong><span>Local and international cuisine</span></div></Link><Link className="hero-option" to="/recreation"><Dumbbell/><div><strong>Recreation</strong><span>Relax, refresh and recharge</span></div></Link></div></section>
+<section className="section"><div className="section-inner split"><div><SectionTitle eyebrow="A Note from the Director" centered={false}>The Essence of Smooth Glamour</SectionTitle><p className="lead">At Al Hayat Hotel, hospitality is expressed through thoughtful service, modern comfort and the warmth of Sharjah. Every detail is considered to make your stay smooth, restful and memorable.</p><p>From your arrival to your departure, our team is dedicated to creating an experience that feels effortless and genuinely welcoming.</p></div><div className="framed-image"><SafeImage src={photos.exterior} alt="Al Hayat Hotel Sharjah exterior"/></div></div></section>
+<section className="section-muted"><div className="section-inner highlights"><Highlight icon={<Clock3/>} label="24-Hour Reception"/><Highlight icon={<Car/>} label="Free Private Parking"/><Highlight icon={<Wifi/>} label="Free WiFi"/><Highlight icon={<Plane/>} label="Airport Shuttle" note="Chargeable"/></div></section>
+<section className="section"><div className="section-inner split"><SafeImage src={photos.lobby} alt="Al Hayat Hotel reception"/><div><SectionTitle eyebrow="Always Here" centered={false}>Reception</SectionTitle><p className="lead">Our friendly front desk is open 24 hours, assisting you from booking to check-out.</p><ContactActions/></div></div></section>
+<section className="section section-muted"><div className="section-inner"><SectionTitle eyebrow="Experience Al Hayat">Stay, Dine & Unwind</SectionTitle><div className="preview-grid"><Preview title="Rooms" text="Four thoughtfully appointed room categories for business and leisure stays." image={photos.queen} to="/rooms"/><Preview title="Dining" text="Authentic local and international cuisine served throughout the day." image={photos.restaurant} to="/dining"/><Preview title="Recreation" text="Pool, gym and wellness facilities for a restorative stay." image={photos.pool} to="/recreation"/></div></div></section></main>}
+function Highlight({icon,label,note}:{icon:React.ReactNode;label:string;note?:string}){return <div className="highlight">{icon}<strong>{label}</strong>{note&&<small>{note}</small>}</div>};function Preview({title,text,image,to}:{title:string;text:string;image:string;to:"/rooms"|"/dining"|"/recreation"}){return <article className="preview-card"><SafeImage src={image} alt={title}/><div className="card-body"><h3>{title}</h3><p>{text}</p><Link className="text-link" to={to}>View All</Link></div></article>}
