@@ -10,7 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DiningRouteImport } from './routes/dining'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as HotelRouteImport } from './routes/hotel'
+import { Route as OffersRouteImport } from './routes/offers'
 import { Route as RecreationRouteImport } from './routes/recreation'
 import { Route as RoomsRouteImport } from './routes/rooms'
 
@@ -19,9 +23,29 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiningRoute = DiningRouteImport.update({
+  id: '/dining',
+  path: '/dining',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HotelRoute = HotelRouteImport.update({
   id: '/hotel',
   path: '/hotel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OffersRoute = OffersRouteImport.update({
+  id: '/offers',
+  path: '/offers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RecreationRoute = RecreationRouteImport.update({
@@ -37,34 +61,75 @@ const RoomsRoute = RoomsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/dining': typeof DiningRoute
+  '/gallery': typeof GalleryRoute
   '/hotel': typeof HotelRoute
+  '/offers': typeof OffersRoute
   '/recreation': typeof RecreationRoute
   '/rooms': typeof RoomsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/dining': typeof DiningRoute
+  '/gallery': typeof GalleryRoute
   '/hotel': typeof HotelRoute
+  '/offers': typeof OffersRoute
   '/recreation': typeof RecreationRoute
   '/rooms': typeof RoomsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/dining': typeof DiningRoute
+  '/gallery': typeof GalleryRoute
   '/hotel': typeof HotelRoute
+  '/offers': typeof OffersRoute
   '/recreation': typeof RecreationRoute
   '/rooms': typeof RoomsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/hotel' | '/recreation' | '/rooms'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/dining'
+    | '/gallery'
+    | '/hotel'
+    | '/offers'
+    | '/recreation'
+    | '/rooms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/hotel' | '/recreation' | '/rooms'
-  id: '__root__' | '/' | '/hotel' | '/recreation' | '/rooms'
+  to:
+    | '/'
+    | '/contact'
+    | '/dining'
+    | '/gallery'
+    | '/hotel'
+    | '/offers'
+    | '/recreation'
+    | '/rooms'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/dining'
+    | '/gallery'
+    | '/hotel'
+    | '/offers'
+    | '/recreation'
+    | '/rooms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  DiningRoute: typeof DiningRoute
+  GalleryRoute: typeof GalleryRoute
   HotelRoute: typeof HotelRoute
+  OffersRoute: typeof OffersRoute
   RecreationRoute: typeof RecreationRoute
   RoomsRoute: typeof RoomsRoute
 }
@@ -78,11 +143,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dining': {
+      id: '/dining'
+      path: '/dining'
+      fullPath: '/dining'
+      preLoaderRoute: typeof DiningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hotel': {
       id: '/hotel'
       path: '/hotel'
       fullPath: '/hotel'
       preLoaderRoute: typeof HotelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offers': {
+      id: '/offers'
+      path: '/offers'
+      fullPath: '/offers'
+      preLoaderRoute: typeof OffersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/recreation': {
@@ -104,7 +197,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  DiningRoute: DiningRoute,
+  GalleryRoute: GalleryRoute,
   HotelRoute: HotelRoute,
+  OffersRoute: OffersRoute,
   RecreationRoute: RecreationRoute,
   RoomsRoute: RoomsRoute,
 }
