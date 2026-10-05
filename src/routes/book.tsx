@@ -35,10 +35,10 @@ function Book() {
   const set = <K extends keyof Booking>(key: K, value: Booking[K]) => {
     setData((prev) => {
       const next = { ...prev, [key]: value };
-      if (key === "room") next.rate = String(ROOM_RATES[value as RoomType]);
+      if (key === "room") next["rate"] = String(ROOM_RATES[value as RoomType]);
       if (key === "arrival" || key === "departure") {
-        const nights = calculateNights(next.arrival, next.departure);
-        if (nights > 0) next.nights = String(nights);
+        const nights = calculateNights(next["arrival"], next["departure"]);
+        if (nights > 0) next["nights"] = String(nights);
       }
       return next;
     });
@@ -51,14 +51,14 @@ function Book() {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     const next: Record<string, string> = {};
-    if (data.guest.trim().length < 2) next.guest = "Please enter the guest name";
-    if (!data.arrival) next.arrival = "Select an arrival date and time";
-    if (!data.departure) next.departure = "Select a departure date and time";
-    if (data.arrival && data.departure && calculateNights(data.arrival, data.departure) === 0) next.departure = "Departure must be after arrival";
-    if (!(Number(data.guests) >= 1)) next.guests = "Enter at least 1 guest";
-    if (nights < 1) next.nights = "Enter at least 1 night";
-    if (rate < 1) next.rate = "Enter a valid rate";
-    if (!data.billing.trim()) next.billing = "Enter a billing instruction";
+    if (data.guest.trim().length < 2) next["guest"] = "Please enter the guest name";
+    if (!data.arrival) next["arrival"] = "Select an arrival date and time";
+    if (!data.departure) next["departure"] = "Select a departure date and time";
+    if (data.arrival && data.departure && calculateNights(data.arrival, data.departure) === 0) next["departure"] = "Departure must be after arrival";
+    if (!(Number(data.guests) >= 1)) next["guests"] = "Enter at least 1 guest";
+    if (nights < 1) next["nights"] = "Enter at least 1 night";
+    if (rate < 1) next["rate"] = "Enter a valid rate";
+    if (!data.billing.trim()) next["billing"] = "Enter a billing instruction";
     setErrors(next);
     if (Object.keys(next).length > 0) return;
     const msg = `Booking request - Al Hayat Hotel\nGuest Name: ${data.guest}\nCompany: ${data.company || "-"}\nArrival: ${data.arrival}\nDeparture: ${data.departure}\nGuests: ${data.guests}\nRoom Type: ${data.room}\nNights: ${data.nights}\nRate per Night: AED ${data.rate}\nBilling Instruction: ${data.billing}\nEstimated Total: AED ${total.toFixed(2)} (incl. 5% tax)`;
