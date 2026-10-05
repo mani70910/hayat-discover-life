@@ -20,7 +20,7 @@ const initial: Booking = { guest: "", company: "", arrival: "", departure: "", g
 
 export const Route = createFileRoute("/book")({
   validateSearch: (search: Record<string, unknown>) => ({
-    room: roomTypes.includes(search.room as RoomType) ? (search.room as RoomType) : undefined,
+    ...(roomTypes.includes(search["room"] as RoomType) ? { room: search["room"] as RoomType } : {}),
   }),
   head: () => ({ meta: meta("Book Your Stay | Al Hayat Hotel Sharjah", "Book a Queen, Twin, Deluxe or Suite room at Al Hayat Hotel Sharjah.") }),
   component: Book,
@@ -73,17 +73,17 @@ function Book() {
       {sent && <p className="success-message" role="status"><CheckCircle2 /> Your booking request has been prepared in WhatsApp. If it did not open, please check your pop-up blocker or contact us directly.</p>}
       <form className="booking-form" onSubmit={submit} noValidate>
         <div className="form-grid">
-          <Field label="Guest Name" error={errors.guest}><input value={data.guest} maxLength={100} onChange={(e) => set("guest", e.target.value)} /></Field>
-          <Field label="Company" error={errors.company}><input value={data.company} maxLength={100} onChange={(e) => set("company", e.target.value)} /></Field>
-          <Field label="Arrival Date & Time" error={errors.arrival}><input type="datetime-local" value={data.arrival} onChange={(e) => set("arrival", e.target.value)} /></Field>
-          <Field label="Departure Date & Time" error={errors.departure}><input type="datetime-local" value={data.departure} onChange={(e) => set("departure", e.target.value)} /></Field>
-          <Field label="No. of Guests" error={errors.guests}><input type="number" min={1} max={20} value={data.guests} onChange={(e) => set("guests", e.target.value)} /></Field>
-          <Field label="Room Type" error={errors.room}>
+          <Field label="Guest Name" error={errors["guest"]}><input value={data.guest} maxLength={100} onChange={(e) => set("guest", e.target.value)} /></Field>
+          <Field label="Company" error={errors["company"]}><input value={data.company} maxLength={100} onChange={(e) => set("company", e.target.value)} /></Field>
+          <Field label="Arrival Date & Time" error={errors["arrival"]}><input type="datetime-local" value={data.arrival} onChange={(e) => set("arrival", e.target.value)} /></Field>
+          <Field label="Departure Date & Time" error={errors["departure"]}><input type="datetime-local" value={data.departure} onChange={(e) => set("departure", e.target.value)} /></Field>
+          <Field label="No. of Guests" error={errors["guests"]}><input type="number" min={1} max={20} value={data.guests} onChange={(e) => set("guests", e.target.value)} /></Field>
+          <Field label="Room Type" error={errors["room"]}>
             <select value={data.room} onChange={(e) => set("room", e.target.value as RoomType)}>{roomTypes.map((t) => <option key={t} value={t}>{t} Room</option>)}</select>
           </Field>
-          <Field label="No. of Nights" error={errors.nights}><input type="number" min={1} max={365} value={data.nights} onChange={(e) => set("nights", e.target.value)} /></Field>
-          <Field label="Rate per Night (AED)" error={errors.rate}><input type="number" min={1} value={data.rate} onChange={(e) => set("rate", e.target.value)} /></Field>
-          <Field label="Billing Instruction" error={errors.billing} full><input value={data.billing} maxLength={200} onChange={(e) => set("billing", e.target.value)} /></Field>
+          <Field label="No. of Nights" error={errors["nights"]}><input type="number" min={1} max={365} value={data.nights} onChange={(e) => set("nights", e.target.value)} /></Field>
+          <Field label="Rate per Night (AED)" error={errors["rate"]}><input type="number" min={1} value={data.rate} onChange={(e) => set("rate", e.target.value)} /></Field>
+          <Field label="Billing Instruction" error={errors["billing"]} full><input value={data.billing} maxLength={200} onChange={(e) => set("billing", e.target.value)} /></Field>
         </div>
         <div className="booking-summary">
           <div><span>Estimated Total</span><strong>AED {total.toFixed(2)}</strong><small>{nights} night{nights === 1 ? "" : "s"} × AED {rate} + 5% tax</small></div>
