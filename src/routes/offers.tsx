@@ -9,7 +9,7 @@ const offers: [string, string, string][] = [
 ];
 
 export const Route = createFileRoute("/offers")({
-  head: () => ({ meta: meta("Offers | Al Hayat Hotel Sharjah", "See the latest stay, dining and hotel offers from Al Hayat Hotel Sharjah.") }),
+  head: () => ({ meta: meta("Offers | Al Hayat Hotel Sharjah", "See the latest stay, dining and hotel offers from Al Hayat Hotel Sharjah.", photos.lobby) }),
   component: Offers,
 });
 

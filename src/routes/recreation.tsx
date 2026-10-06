@@ -13,7 +13,7 @@ const items: [string, string, string][] = [
 ];
 
 export const Route = createFileRoute("/recreation")({
-  head: () => ({ meta: meta("Recreation & Wellness | Al Hayat Hotel Sharjah", "Explore the pool, gyms, Jacuzzi, sauna and steam room at Al Hayat Hotel Sharjah.") }),
+  head: () => ({ meta: meta("Recreation & Wellness | Al Hayat Hotel Sharjah", "Explore the pool, gyms, Jacuzzi, sauna and steam room at Al Hayat Hotel Sharjah.", photos.pool) }),
   component: Recreation,
 });
 

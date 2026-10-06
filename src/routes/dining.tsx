@@ -8,7 +8,7 @@ const dining: [string, string][] = [[photos.restaurant, "Restaurant"], [photos.b
 const timings: [string, string][] = [["Breakfast", "6:00 AM - 10:30 AM"], ["Lunch", "12:00 PM - 3:30 PM"], ["Dinner", "7:30 PM - 11:00 PM"]];
 
 export const Route = createFileRoute("/dining")({
-  head: () => ({ meta: meta("Dining | Al Hayat Hotel Sharjah", "Enjoy buffet dining, a 24-hour coffee shop and room service at Al Hayat Hotel Sharjah.") }),
+  head: () => ({ meta: meta("Dining | Al Hayat Hotel Sharjah", "Enjoy buffet dining, a 24-hour coffee shop and room service at Al Hayat Hotel Sharjah.", photos.restaurant) }),
   component: Dining,
 });
 
@@ -21,7 +21,7 @@ function Dining() {
     window.addEventListener("keydown", key);
     return () => window.removeEventListener("keydown", key);
   }, [lightbox]);
-  const current = dining[i] ?? dining[0]!;
+  const current = dining[i] ?? [photos.restaurant, "Restaurant"];
   return <main>
     <PageHero title="Dining" eyebrow="Local & International Flavours" image={photos.restaurant} />
     <section className="section"><div className="section-inner">

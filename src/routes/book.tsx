@@ -22,7 +22,7 @@ export const Route = createFileRoute("/book")({
   validateSearch: (search: Record<string, unknown>) => ({
     ...(roomTypes.includes(search["room"] as RoomType) ? { room: search["room"] as RoomType } : {}),
   }),
-  head: () => ({ meta: meta("Book Your Stay | Al Hayat Hotel Sharjah", "Book a Queen, Twin, Deluxe or Suite room at Al Hayat Hotel Sharjah.") }),
+  head: () => ({ meta: meta("Book Your Stay | Al Hayat Hotel Sharjah", "Book a Queen, Twin, Deluxe or Suite room at Al Hayat Hotel Sharjah.", photos.room) }),
   component: Book,
 });
 
