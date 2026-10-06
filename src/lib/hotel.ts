@@ -13,12 +13,12 @@ import kitchen from "@/assets/kitchen.jpg.asset.json";
 import pool from "@/assets/pool.jpg.asset.json";
 import jacuzzi from "@/assets/jacuzzi.jpg.asset.json";
 import gym from "@/assets/gym.jpg.asset.json";
-import video1 from "@/assets/hero-video-1.mp4.asset.json";
-import video2 from "@/assets/hero-video-2.mp4.asset.json";
-import video3 from "@/assets/hero-video-3.mp4.asset.json";
-import video4 from "@/assets/hero-video-4.mp4.asset.json";
-import video5 from "@/assets/hero-video-5.mp4.asset.json";
-import video6 from "@/assets/hero-video-6.mp4.asset.json";
+import video1 from "@/assets/hero-video-1.webm.asset.json";
+import video2 from "@/assets/hero-video-2.webm.asset.json";
+import video3 from "@/assets/hero-video-3.webm.asset.json";
+import video4 from "@/assets/hero-video-4.webm.asset.json";
+import video5 from "@/assets/hero-video-5.webm.asset.json";
+import video6 from "@/assets/hero-video-6.webm.asset.json";
 
 export const heroVideos = [video1.url, video2.url, video3.url, video4.url, video5.url, video6.url];
 
