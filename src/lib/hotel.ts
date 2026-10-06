@@ -50,8 +50,9 @@ export const navItems = [
   ["Recreation", "/recreation"], ["Gallery", "/gallery"], ["Location", "/location"], ["Contact", "/contact"],
 ] as const;
 
-export const meta = (title: string, description: string) => [
+export const meta = (title: string, description: string, image?: string) => [
   { title }, { name: "description", content: description }, { property: "og:title", content: title },
   { property: "og:description", content: description }, { property: "og:type", content: "website" },
   { name: "twitter:card", content: "summary_large_image" },
+  ...(image?.startsWith("https://") ? [{ property: "og:image", content: image }, { name: "twitter:image", content: image }] : []),
 ];
