@@ -14,7 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      hotel_ai_status: {
+        Row: {
+          blocked: boolean
+          id: string
+          message: string | null
+          updated_at: string
+        }
+        Insert: {
+          blocked?: boolean
+          id: string
+          message?: string | null
+          updated_at?: string
+        }
+        Update: {
+          blocked?: boolean
+          id?: string
+          message?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
