@@ -4,13 +4,13 @@ import { ContactActions, PageHero, SectionTitle } from "@/components/site";
 import { CONTACT, meta, photos } from "@/lib/hotel";
 
 export const Route = createFileRoute("/location")({
-  head: () => ({ meta: [...meta("Location | Al Hayat Hotel Sharjah", "Find Al Hayat Hotel on Zahraa Street, facing King Faisal Masjid in central Sharjah."), { property: "og:image", content: photos.exterior }, { name: "twitter:image", content: photos.exterior }] }),
+  head: () => ({ meta: meta("Location | Al Hayat Hotel Sharjah", "Find Al Hayat Hotel on Zahraa Street, facing King Faisal Masjid in central Sharjah.", photos.location) }),
   component: Location,
 });
 
 function Location() {
   return <main>
-    <PageHero title="Our Location" eyebrow="In the Heart of Sharjah" image={photos.exterior} />
+    <PageHero title="Our Location" eyebrow="In the Heart of Sharjah" image={photos.location} />
     <section className="section"><div className="section-inner">
       <SectionTitle eyebrow="Al Hayat Hotel Sharjah" centered={false}>Find Us</SectionTitle>
       <p className="location-address"><MapPin />{CONTACT.address}</p>
