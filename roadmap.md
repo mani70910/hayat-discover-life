@@ -6,3 +6,7 @@
 - [x] Uploaded oud music with independent mute/unmute control.
 - [x] Appropriate authentic hotel photos throughout the pages.
 - [x] Verify playback, music controls, photos, and tests.
+- [ ] Tidy booking form and validate complete booking requests.
+- [ ] Clarify the existing logo and its gold leaf without changing the brand.
+- [ ] Strengthen welcome text and fix small-screen layout issues.
+- [ ] Check page errors, booking submission, and screen sizes.
