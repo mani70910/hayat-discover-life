@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, Clock3, X } from "lucide-react";
 import { ContactActions, PageHero, SafeImage, SectionTitle } from "@/components/site";
 import { meta, photos } from "@/lib/hotel";
 
-const dining: [string, string][] = [[photos.restaurant, "Restaurant"], [photos.buffet, "Buffet Restaurant"], [photos.coffee, "Coffee Shop"], [photos.roomService, "Room Service"], [photos.kitchen, "Kitchen"]];
+const dining: [string, string][] = [[photos.restaurant, "Restaurant"], [photos.buffet, "Restaurant Seating"], [photos.coffee, "Dining Lounge"], [photos.roomService, "Table Setting"], [photos.lobby, "Hotel Lounge"]];
 const timings: [string, string][] = [["Breakfast", "6:00 AM - 10:30 AM"], ["Lunch", "12:00 PM - 3:30 PM"], ["Dinner", "7:30 PM - 11:00 PM"]];
 
 export const Route = createFileRoute("/dining")({

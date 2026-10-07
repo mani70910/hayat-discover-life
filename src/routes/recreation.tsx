@@ -9,7 +9,7 @@ const items: [string, string, string][] = [
   ["Men's Gym", photos.gym, "A well-equipped fitness space for men."],
   ["Women's Gym", photos.gym, "A dedicated fitness space for women."],
   ["Sauna", photos.sauna, "Relax and restore in calming dry heat."],
-  ["Steam Room", photos.jacuzzi, "A tranquil space for warmth and renewal."],
+  ["Steam Room", photos.steam, "A tranquil space for warmth and renewal."],
 ];
 
 export const Route = createFileRoute("/recreation")({
