@@ -14,3 +14,4 @@
 - Keep guest recommendations as a public, input-validated server function calling server-only AI Gateway helpers; this provides hotel advice without exposing credentials or requiring guest accounts.
 - Persist AI access blocks in the service-only availability table and disable automatic retries; terminal provider errors must not trigger repeated paid calls.
 - Keep the hero video playlist in centralized hotel data and advance on video completion; this plays uploaded clips in sequence without downloading all six simultaneously.
+- Keep hero music in a separate looping audio player started by the guest; browser sound policies require a click and music must remain uninterrupted between video clips.
