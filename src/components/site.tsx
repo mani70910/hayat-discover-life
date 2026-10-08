@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X, MessageCircle, Mail, MapPin, Phone, Globe, ChevronRight, Star } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
-import logo from "@/assets/logo.jpg.asset.json";
+import logo from "@/assets/logo-clear.png.asset.json";
 import logoFooter from "@/assets/logo-footer.jpg.asset.json";
 import { CONTACT, navItems } from "@/lib/hotel";
 
