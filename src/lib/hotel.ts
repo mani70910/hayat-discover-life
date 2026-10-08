@@ -12,6 +12,7 @@ import location from "@/assets/actual-location.jpg.asset.json";
 import extraRoom from "@/assets/room-gallery-new.jpg.asset.json";
 import music from "@/assets/hero-oud-music.mp3.asset.json";
 import steam from "@/assets/actual-steam.jpg.asset.json";
+import building from "@/assets/al-hayat-hotel-blue-skies.png.asset.json";
 import diningWide from "@/assets/actual-dining-wide.jpg.asset.json";
 import diningLounge from "@/assets/actual-dining-lounge.jpg.asset.json";
 import diningTable from "@/assets/actual-dining-table.jpg.asset.json";
@@ -35,7 +36,7 @@ export const CONTACT = {
   website: "www.alhayat-hotel.com",
 };
 
-export const photos = { queen: queen.url, twin: twin.url, deluxe: deluxe.url, suite: suite.url, restaurant: restaurant.url, lobby: lobby.url, room: deluxe.url, exterior: exterior.url, buffet: diningWide.url, coffee: diningLounge.url, roomService: diningTable.url, kitchen: diningWide.url, pool: pool.url, jacuzzi: pool.url, gym: gym.url, sauna: sauna.url, steam: steam.url, location: location.url, additionalRoom: extraRoom.url };
+export const photos = { queen: queen.url, twin: twin.url, deluxe: deluxe.url, suite: suite.url, restaurant: restaurant.url, lobby: lobby.url, room: deluxe.url, exterior: exterior.url, buffet: diningWide.url, coffee: diningLounge.url, roomService: diningTable.url, kitchen: diningWide.url, pool: pool.url, jacuzzi: pool.url, gym: gym.url, sauna: sauna.url, steam: steam.url, location: location.url, additionalRoom: extraRoom.url, building: building.url };
 
 export type RoomType = "Queen" | "Twin" | "Deluxe" | "Suite";
 export const ROOM_RATES: Record<RoomType, number> = { Queen: 250, Twin: 250, Deluxe: 350, Suite: 500 };
