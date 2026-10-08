@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { BedDouble, Utensils, Dumbbell, ChevronDown, Clock3, Car, Wifi, Plane } from "lucide-react";
+import { BedDouble, Utensils, Dumbbell, ChevronDown, ChevronLeft, ChevronRight, Pause, Play, Clock3, Car, Wifi, Plane } from "lucide-react";
 import { ContactActions, SafeImage, SectionTitle, Stars } from "@/components/site";
 import { HeroMusic } from "@/components/hero-music";
 import { StayRecommender } from "@/components/stay-recommender";
