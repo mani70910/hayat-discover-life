@@ -63,5 +63,5 @@
 .leadership-compact .section-title h2{font-size:1.9rem}
 .leadership-compact blockquote{font-size:1.05rem}
 .hotel-building-photo img{object-fit:contain;background:var(--muted)}
-.hotel-building-hero>img{object-fit:contain;background:var(--primary)}
+.hotel-building-hero .page-hero>img{object-fit:contain;background:var(--primary)}
 @media(max-width:760px){.leadership-layout,.leadership-compact .leadership-layout{grid-template-columns:minmax(0,1fr);gap:32px}.leadership-portrait{width:min(280px,100%);justify-self:center}.leadership-compact .leadership-portrait{width:160px}.leadership-message blockquote{font-size:1.1rem}.leadership-compact{padding-block:48px}}
