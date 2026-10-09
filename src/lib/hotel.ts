@@ -49,6 +49,32 @@ export const calculateNights = (arrival: string, departure: string) => {
 };
 export const calculateTotal = (rate: number, nights: number, taxRate = 0.05) => rate * nights * (1 + taxRate);
 
+// Date-only helpers (YYYY-MM-DD, local midnight — no timezone/DST drift)
+export const toISODate = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+export const parseISODate = (iso: string) => {
+  const [y, m, d] = iso.split("-").map(Number);
+  if (!y || !m || !d) return null;
+  return new Date(y, m - 1, d);
+};
+export const addDays = (iso: string, days: number) => {
+  const d = parseISODate(iso);
+  if (!d) return "";
+  d.setDate(d.getDate() + days);
+  return toISODate(d);
+};
+export const nightsBetween = (checkIn: string, checkOut: string) => {
+  const a = parseISODate(checkIn);
+  const b = parseISODate(checkOut);
+  if (!a || !b) return 0;
+  return Math.round((b.getTime() - a.getTime()) / 86_400_000);
+};
+export const formatDate = (iso: string) => {
+  const d = parseISODate(iso);
+  if (!d) return iso;
+  return d.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+};
+export const formatAED = (n: number) => n.toLocaleString("en-AE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
 export const navItems = [
   ["Home", "/"], ["Hotel", "/hotel"], ["Rooms", "/rooms"], ["Dining", "/dining"],
   ["Recreation", "/recreation"], ["Gallery", "/gallery"], ["Location", "/location"], ["Contact", "/contact"],
