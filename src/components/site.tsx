@@ -1,9 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X, MessageCircle, Mail, MapPin, Phone, Globe, ChevronRight, Star } from "lucide-react";
+import { Menu, X, MessageCircle, Mail, MapPin, Phone, Globe, ChevronRight, Star, UserRound, Quote } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import logo from "@/assets/logo-clear.png.asset.json";
 import logoFooter from "@/assets/logo-clear.png.asset.json";
-import { CONTACT, navItems } from "@/lib/hotel";
+import { CONTACT, hotelLeadership, navItems } from "@/lib/hotel";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -49,3 +49,21 @@ export function SafeImage({ src, alt, className = "", eager = false }: { src: st
 export function SectionTitle({ eyebrow, children, centered = true }: { eyebrow: string; children: ReactNode; centered?: boolean }) { return <div className={`section-title ${centered ? "centered" : ""}`}><span>{eyebrow}</span><h2>{children}</h2><div className="gold-rule"/></div>; }
 
 export function ContactActions() { return <div className="button-row"><a className="button button-navy" href={CONTACT.phoneHref}><Phone />Call</a><a className="button button-outline" href={CONTACT.whatsappUrl} target="_blank" rel="noreferrer"><MessageCircle />WhatsApp</a></div>; }
+
+export function LeadershipSection({ kind }: { kind: "owner" | "manager" }) {
+  const person = hotelLeadership[kind];
+  const compact = kind === "manager";
+  return <section className={`section leadership-section ${compact ? "leadership-compact section-muted" : ""}`} aria-label={compact ? "A message from the manager" : "A message from the hotel owner"}>
+    <div className="section-inner leadership-layout">
+      <div className="leadership-portrait">
+        {person.photo ? <SafeImage src={person.photo} alt={person.role} /> : <div className="leadership-photo-pending" role="img" aria-label={`${person.role} portrait awaiting photo`}><UserRound aria-hidden="true" /><span>{compact ? "Hotel Manager" : "Hotel Arbab"}</span></div>}
+      </div>
+      <div className="leadership-message">
+        <SectionTitle eyebrow={compact ? "A Personal Welcome" : "Our Hospitality, Our Promise"} centered={false}>{compact ? "A Note from the Manager" : "A Message from Our Arbab"}</SectionTitle>
+        <Quote className="leadership-quote-mark" aria-hidden="true" />
+        <blockquote><p>{person.quote}</p></blockquote>
+        <p className="leadership-role">{person.role}</p>
+      </div>
+    </div>
+  </section>;
+}

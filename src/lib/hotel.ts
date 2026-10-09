@@ -12,7 +12,7 @@ import location from "@/assets/actual-location.jpg.asset.json";
 import extraRoom from "@/assets/room-gallery-new.jpg.asset.json";
 import music from "@/assets/hero-oud-music.mp3.asset.json";
 import steam from "@/assets/actual-steam.jpg.asset.json";
-import building from "@/assets/al-hayat-hotel-blue-skies.png.asset.json";
+import building from "@/assets/al-hayat-building-updated.png.asset.json";
 import diningWide from "@/assets/actual-dining-wide.jpg.asset.json";
 import diningLounge from "@/assets/actual-dining-lounge.jpg.asset.json";
 import diningTable from "@/assets/actual-dining-table.jpg.asset.json";
@@ -25,6 +25,11 @@ import video6 from "@/assets/hero-video-6.webm.asset.json";
 
 export const heroVideos = [video1.url, video2.url, video3.url, video4.url, video5.url, video6.url];
 export const heroMusic = music.url;
+
+export const hotelLeadership: Record<"owner" | "manager", { role: string; photo: string | null; quote: string }> = {
+  owner: { role: "Hotel Arbab · Owner", photo: null, quote: "True hospitality begins with a warm welcome and lives on in the memories our guests take home." },
+  manager: { role: "Hotel Manager", photo: null, quote: "Every detail matters, because every guest deserves a comfortable stay and genuinely caring service." },
+};
 
 export const CONTACT = {
   address: "Zahraa St., Facing King Faisal Masjid, Sharjah - U.A.E",
